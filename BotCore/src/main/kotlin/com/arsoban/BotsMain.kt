@@ -1,11 +1,13 @@
 package com.arsoban
 
 import io.github.cdimascio.dotenv.dotenv
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.newSingleThreadContext
 import me.desinger.MainBot
 
+@OptIn(DelicateCoroutinesApi::class)
 suspend fun main() {
     val dotenv = dotenv()
 
