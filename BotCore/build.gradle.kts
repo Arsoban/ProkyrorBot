@@ -25,6 +25,10 @@ tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
+tasks.create<DefaultTask>("stage") {
+    dependsOn("build", "shadowJar", "clean")
+}
+
 tasks {
     compileJava {
         options.encoding = "UTF-8"
