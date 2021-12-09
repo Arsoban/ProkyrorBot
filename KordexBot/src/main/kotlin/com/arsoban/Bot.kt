@@ -25,7 +25,7 @@ class Bot {
             }
 
             presence {
-                watching("На Дурку")
+                watching("на Дурку")
             }
 
             intents {

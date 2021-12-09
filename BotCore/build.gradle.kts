@@ -26,7 +26,7 @@ tasks.getByName<Test>("test") {
 }
 
 tasks.create<DefaultTask>("stage") {
-    dependsOn("build", "shadowJar", "clean")
+    dependsOn("build", "shadowJar")
 }
 
 tasks {

@@ -8,6 +8,4 @@ repositories {
 }
 
 dependencies {
-//    implementation(project(":KordexBot"))
-//    implementation(project(":JavacordBot"))
 }
