@@ -33,4 +33,10 @@ tasks {
     compileJava {
         options.encoding = "UTF-8"
     }
+
+    jar {
+        manifest {
+            attributes("Main-Class" to "com.arsoban.BotsMainKt")
+        }
+    }
 }
