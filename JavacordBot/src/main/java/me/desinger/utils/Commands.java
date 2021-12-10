@@ -14,6 +14,8 @@ import java.awt.*;
 import java.util.Iterator;
 
 public class Commands {
+    private static boolean bassboost = false;
+
     public static void playCommand(String query, ServerMusicManager m, MessageCreateEvent event, Server server){
         event.getMessageAuthor().getConnectedVoiceChannel().ifPresentOrElse(voiceChannel -> {
             if(voiceChannel.canYouConnect() && voiceChannel.canYouSee() && voiceChannel.hasPermission(event.getApi().getYourself(), PermissionType.SPEAK)){
@@ -158,5 +160,23 @@ public class Commands {
                         .setColor(Color.RED)
                         .setTitle("Ошибочка!")
                         .setDescription("Ты сейчас не в голосовом канале!")).send(event.getChannel()));
+    }
+    public static void bassboostCommand(MessageCreateEvent event, Server server) {
+        bassboost = !bassboost;
+        if(bassboost) {
+            AudioManager.get(server.getId()).player.setVolume(1000000);
+            new MessageBuilder()
+                    .setEmbed(new EmbedBuilder()
+                            .setColor(Color.GREEN)
+                            .setTitle("Успех!")
+                            .setDescription("Бассбуст включён!")).send(event.getChannel());
+        } else {
+            AudioManager.get(server.getId()).player.setVolume(50);
+            new MessageBuilder()
+                    .setEmbed(new EmbedBuilder()
+                            .setColor(Color.GREEN)
+                            .setTitle("Успех!")
+                            .setDescription("Бассбуст выключен!")).send(event.getChannel());
+        }
     }
 }
