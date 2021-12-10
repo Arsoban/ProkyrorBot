@@ -12,18 +12,18 @@ import java.awt.*;
 public class CommandUtil {
     public static void playTrack(String query, TextChannel channel, ServerMusicManager m, AudioPlayerManager manager){
         manager.loadItemOrdered(m, isUrl(query) ? query : "ytsearch: " + query, new FunctionalResultHandler(audioTrack -> {
-            System.out.println("n1");
             new MessageBuilder()
                     .setEmbed(new EmbedBuilder()
                             .setColor(Color.GREEN)
                             .setTitle("Новая песня!")
-                            .setDescription("Сейчас играет: " + audioTrack.getInfo().title)).send(channel);
+                            .setDescription("Новый трек добавлен в очередь: " + audioTrack.getInfo().title)).send(channel);
             m.scheduler.queue(audioTrack);
+            m.scheduler.setPlayingTrack(m.player.getPlayingTrack());
 
         }, audioPlaylist -> {
             if (audioPlaylist.isSearchResult()) {
                 m.scheduler.queue(audioPlaylist.getTracks().get(0));
-                System.out.println("n2");
+                m.scheduler.setPlayingTrack(m.player.getPlayingTrack());
                 new MessageBuilder()
                         .setEmbed(new EmbedBuilder()
                                 .setColor(Color.GREEN)
@@ -32,6 +32,7 @@ public class CommandUtil {
             } else {
                 audioPlaylist.getTracks().forEach(audioTrack -> {
                     m.scheduler.queue(audioTrack);
+                    m.scheduler.setPlayingTrack(m.player.getPlayingTrack());
                     new MessageBuilder()
                             .setEmbed(new EmbedBuilder()
                                     .setColor(Color.GREEN)
