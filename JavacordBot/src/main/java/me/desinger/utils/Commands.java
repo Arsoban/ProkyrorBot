@@ -55,12 +55,18 @@ public class Commands {
     }
     public static void stopCommand(MessageCreateEvent event, Server server){
         server.getAudioConnection().ifPresentOrElse(connection -> {
-            AudioManager.get(server.getId()).player.stopTrack();
-            new MessageBuilder()
+            event.getMessageAuthor().getConnectedVoiceChannel().ifPresentOrElse(voiceChannel -> {
+                AudioManager.get(server.getId()).player.stopTrack();
+                new MessageBuilder()
+                        .setEmbed(new EmbedBuilder()
+                                .setColor(Color.GREEN)
+                                .setTitle("Успех!")
+                                .setDescription("Я выключил эту песню!")).send(event.getChannel());
+            }, () -> new MessageBuilder()
                     .setEmbed(new EmbedBuilder()
-                            .setColor(Color.GREEN)
-                            .setTitle("Успех!")
-                            .setDescription("Я выключил эту песню!")).send(event.getChannel());
+                            .setColor(Color.RED)
+                            .setTitle("Ошибочка!")
+                            .setDescription("Ты не в голосовом канале!")).send(event.getChannel()));
 
         }, () -> new MessageBuilder()
                 .setEmbed(new EmbedBuilder()
