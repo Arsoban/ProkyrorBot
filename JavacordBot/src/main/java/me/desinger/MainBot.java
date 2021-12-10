@@ -60,6 +60,8 @@ public class MainBot {
                                             .setDescription("Не хватает аргумента для команды: ,volume 0-100")).send(event.getChannel());
                     } else if(args[0].equals(",join") || args[0].equals(",j")) {
                         Commands.joinCommand(event);
+                    }  else if(args[0].equals(",bassboost") || args[0].equals(",bb")) {
+                        Commands.bassboostCommand(event, event.getServer().get());
                     }
                 });
     }
