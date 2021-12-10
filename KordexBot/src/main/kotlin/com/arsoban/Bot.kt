@@ -2,6 +2,7 @@ package com.arsoban
 
 import com.arsoban.extension.context.ReportExtension
 import com.arsoban.extension.command.AvatarExtension
+import com.arsoban.extension.command.HelpExtension
 import com.arsoban.extension.command.LyricsExtension
 import com.kotlindiscord.kord.extensions.ExtensibleBot
 import com.kotlindiscord.kord.extensions.utils.env
@@ -22,6 +23,7 @@ class Bot {
                 add(::ReportExtension)
                 add(::AvatarExtension)
                 add(::LyricsExtension)
+                add(::HelpExtension)
             }
 
             presence {
