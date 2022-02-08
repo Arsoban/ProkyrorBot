@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.0"
+    kotlin("jvm") version "1.6.10"
     java
     id("com.github.johnrengelman.shadow") version "7.1.0"
 }
@@ -17,7 +17,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(project(":KordexBot"))
     implementation(project(":JavacordBot"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     implementation("io.github.cdimascio:dotenv-kotlin:6.2.2")
 }
 

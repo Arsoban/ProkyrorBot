@@ -5,7 +5,6 @@ import com.arsoban.extension.command.AvatarExtension
 import com.arsoban.extension.command.HelpExtension
 import com.arsoban.extension.command.LyricsExtension
 import com.kotlindiscord.kord.extensions.ExtensibleBot
-import com.kotlindiscord.kord.extensions.utils.env
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.json.*

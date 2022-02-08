@@ -11,7 +11,13 @@ import dev.kord.rest.builder.message.create.embed
 class AvatarExtension : Extension() {
 
     inner class AvatarArgs : Arguments() {
-        val user by optionalUser("user", "Пользователь чей аватар вы хотите посмотреть", false)
+        val user by optionalUser() {
+
+            name = "user"
+
+            description = "Пользователь чей аватар вы хотите посмотреть"
+
+        }
     }
 
     override val name: String = "AvatarExtension"

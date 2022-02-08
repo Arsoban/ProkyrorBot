@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.javacord:javacord:3.3.2")
+    implementation("org.javacord:javacord:3.4.0")
     implementation("com.sedmelluq:lavaplayer:1.3.78")
 }
 

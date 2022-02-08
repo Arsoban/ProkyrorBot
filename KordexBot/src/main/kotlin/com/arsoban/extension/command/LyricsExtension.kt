@@ -16,7 +16,13 @@ class LyricsExtension : Extension() {
     private val client: HttpClient by inject(named("httpClient"))
 
     class LyricsArgs : Arguments() {
-        val track by string("track-name", "Название трека")
+        val track by string() {
+
+            name = "track-name"
+
+            description = "Название трека"
+
+        }
     }
 
     override val name: String = "LyricsExtension"

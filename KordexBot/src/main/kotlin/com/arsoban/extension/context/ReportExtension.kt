@@ -168,7 +168,6 @@ class ReportExtension : Extension() {
                         }
                     } else {
                         event.interaction.respondEphemeral {
-                            ephemeral = true
 
                             content = ":x: У тебя нет прав на это!"
                         }
@@ -194,7 +193,6 @@ class ReportExtension : Extension() {
                         }
                     } else {
                         event.interaction.respondEphemeral {
-                            ephemeral = true
 
                             content = ":x: У тебя нет прав на это!"
                         }
