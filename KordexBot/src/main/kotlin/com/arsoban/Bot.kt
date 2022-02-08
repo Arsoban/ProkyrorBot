@@ -4,6 +4,7 @@ import com.arsoban.extension.context.ReportExtension
 import com.arsoban.extension.command.AvatarExtension
 import com.arsoban.extension.command.HelpExtension
 import com.arsoban.extension.command.LyricsExtension
+import com.arsoban.extension.command.TimeoutExtension
 import com.kotlindiscord.kord.extensions.ExtensibleBot
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
@@ -23,6 +24,7 @@ class Bot {
                 add(::AvatarExtension)
                 add(::LyricsExtension)
                 add(::HelpExtension)
+                add(::TimeoutExtension)
             }
 
             presence {
