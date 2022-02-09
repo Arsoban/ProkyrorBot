@@ -1,1 +1,1 @@
-worker: java -jar ./BotCore/build/libs/BotCore-1.0-all.jar
+web: java -jar ./BotCore/build/libs/BotCore-1.0-all.jar

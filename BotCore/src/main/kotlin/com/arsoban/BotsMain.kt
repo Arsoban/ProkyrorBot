@@ -1,5 +1,6 @@
 package com.arsoban
 
+import com.arsoban.prokyrorapi.startServer
 import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
@@ -17,6 +18,14 @@ suspend fun main() {
         token = dotenv()["TOKEN"]
     }
 
+    var restPort = System.getenv("PORT").takeUnless { text ->
+        text == ""
+    }
+
+    if (restPort == null) {
+        restPort = dotenv()["PORT"]
+    }
+
     val kordBot = GlobalScope.launch(newSingleThreadContext("kordBot")) {
         val bot = Bot()
 
@@ -29,6 +38,13 @@ suspend fun main() {
         mainBot.startBot(token)
     }
 
+    val restApi = GlobalScope.launch(newSingleThreadContext("restApi")) {
+
+        startServer(restPort!!.toInt())
+
+    }
+
     kordBot.join()
     javacordBot.join()
+    restApi.join()
 }
